@@ -58,15 +58,15 @@
 
   /* ---------- Map ---------- */
   let map, tiles;
-  const tileUrl = () => `https://{s}.basemaps.cartocdn.com/${isDark() ? "dark_all" : "light_all"}/{z}/{x}/{y}{r}.png`;
+  const tileUrl = () => "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
 
   function initMap() {
     map = L.map("map", { zoomControl: true, preferCanvas: true, minZoom: 5 });
     map.fitBounds([[0.85, 99.6], [7.4, 119.3]]);  // Peninsular Malaysia to Sabah
     tiles = L.tileLayer(tileUrl(), {
       maxZoom: 14,
-      subdomains: "abcd",
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a> · Data: JPS',
+      className: "basemap",
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors · Data: JPS',
     }).addTo(map);
   }
 

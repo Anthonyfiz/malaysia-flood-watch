@@ -231,3 +231,10 @@ main { max-width: 1440px; margin: 0 auto; padding: 20px 24px 40px; }
 .leaflet-control-attribution { background: var(--surface) !important; color: var(--text-2); }
 .leaflet-control-attribution a { color: var(--accent-text); }
 .leaflet-bar a { background: var(--surface); color: var(--text); border-color: var(--border); }
+
+/* OpenStreetMap tiles: muted in light mode, inverted for dark mode */
+.basemap { filter: saturate(0.55) contrast(0.95); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .basemap { filter: invert(1) hue-rotate(180deg) brightness(0.85) contrast(0.9) saturate(0.4); }
+}
+:root[data-theme="dark"] .basemap { filter: invert(1) hue-rotate(180deg) brightness(0.85) contrast(0.9) saturate(0.4); }
