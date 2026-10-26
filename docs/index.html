@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Malaysia Flood Watch</title>
+  <meta name="description" content="Live river water levels from JPS stations across Malaysia, with trends, time-to-danger estimates and data-quality analytics.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M16 3C11 10 7 15 7 20a9 9 0 0 0 18 0c0-5-4-10-9-17z' fill='%232a78d6'/></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C11 10 7 15 7 20a9 9 0 0 0 18 0c0-5-4-10-9-17z"/></svg>
+      <div>
+        <h1>Malaysia Flood Watch</h1>
+        <p class="tagline">Live river levels from JPS telemetry stations, checked every 30 minutes</p>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <span class="updated" id="updated">Loading…</span>
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch light or dark theme" title="Switch theme">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="tiles" id="tiles" aria-label="National summary"></section>
+
+    <section class="workspace">
+      <div class="map-card card">
+        <div class="filters" role="group" aria-label="Filters">
+          <select id="stateFilter" aria-label="State"><option value="">All states</option></select>
+          <select id="statusFilter" aria-label="Status">
+            <option value="">All statuses</option>
+            <option value="attention">Needs attention (alert or above)</option>
+            <option value="DANGER">Danger (Bahaya)</option>
+            <option value="WARNING">Warning (Amaran)</option>
+            <option value="ALERT">Alert (Waspada)</option>
+            <option value="NORMAL">Normal</option>
+            <option value="nodata">No current data</option>
+          </select>
+          <input id="search" type="search" placeholder="Search river or station…" aria-label="Search stations">
+        </div>
+        <div id="map" role="region" aria-label="Map of stations"></div>
+        <div class="legend" id="legend"></div>
+      </div>
+
+      <aside class="side card" id="side">
+        <div class="side-head">
+          <div class="tabs" role="tablist">
+            <button role="tab" class="tab active" data-tab="attention" aria-selected="true">Needs attention</button>
+            <button role="tab" class="tab" data-tab="rising" aria-selected="false">Rising</button>
+          </div>
+          <span class="count" id="listCount"></span>
+        </div>
+        <ol class="station-list" id="stationList"></ol>
+        <div class="detail" id="detail" hidden></div>
+      </aside>
+    </section>
+
+    <section class="analytics">
+      <h2>Analytics</h2>
+      <p class="section-note">Built with SQL (DuckDB) over the readings this project has collected since it started running.</p>
+      <div class="grid">
+        <div class="card span-2">
+          <h3>States at a glance</h3>
+          <div class="table-wrap"><table class="data-table" id="stateTable"></table></div>
+        </div>
+        <div class="card">
+          <h3>Stations in each status over time</h3>
+          <div class="chart-box"><canvas id="trendChart" aria-label="Number of stations at alert, warning and danger over time"></canvas></div>
+          <p class="empty-note" id="trendEmpty" hidden>The trend fills in as the pipeline keeps running.</p>
+        </div>
+        <div class="card">
+          <h3>Data quality</h3>
+          <div id="quality"></div>
+        </div>
+        <div class="card">
+          <h3>Closest to danger level now</h3>
+          <ol class="rank-list" id="closest"></ol>
+        </div>
+        <div class="card">
+          <h3>Biggest rise in 24 hours</h3>
+          <ol class="rank-list" id="rise"></ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="about card">
+      <h2>How this works</h2>
+      <div class="about-grid">
+        <div>
+          <h3>Data</h3>
+          <p>River water levels come from the Department of Irrigation and Drainage (JPS) <a href="https://publicinfobanjir.water.gov.my/" target="_blank" rel="noopener">Public Infobanjir</a> portal. JPS only shows the latest reading, so a GitHub Actions job collects every station every 30 minutes and stores the history in the project repository. Station coordinates come from the data.gov.my flood-warning API.</p>
+        </div>
+        <div>
+          <h3>Status &amp; estimates</h3>
+          <p>Status uses each station's own JPS thresholds: Waspada (alert), Amaran (warning) and Bahaya (danger). The trend is a straight line fitted to the last 3 hours of readings, and “time to danger” extends that line to the danger level. That's a simple estimate, not a forecast.</p>
+        </div>
+        <div>
+          <h3>Data quality</h3>
+          <p>Readings are flagged rather than hidden: sensors reporting −9999 are <em>offline</em>, readings over 6 hours old are <em>stale</em>, and stations with placeholder or out-of-order thresholds get no status.</p>
+        </div>
+      </div>
+      <p class="disclaimer">This is an independent student project, not an official warning service. For official flood information, check <a href="https://publicinfobanjir.water.gov.my/" target="_blank" rel="noopener">JPS Public Infobanjir</a>.</p>
+      <p class="credit">Built by <a href="https://www.linkedin.com/in/muhammad-hafizuddin-zakaria-b81719304/" target="_blank" rel="noopener">Muhammad Hafizuddin Zakaria</a> · <a href="https://github.com/Anthonyfiz/malaysia-flood-watch" target="_blank" rel="noopener">Source code</a></p>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

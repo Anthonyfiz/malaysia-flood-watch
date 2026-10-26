@@ -1,0 +1,34 @@
+state,station_id,station_name,district,basin,sub_basin,last_update,water_level,normal,alert,warning,danger
+Perlis,0010491WL,Sg. Gial di Balik Guar,Padang Besar,Sungai Arau,,26/10/2026 09:00:00,11.35,12.50,13.50,14.00,15.00
+Perlis,0010551WL,Sg. Chuchoh di Kg. Chantik(F2),Padang Besar,Sungai Perlis,Sg. Chuchoh,25/10/2026 17:15:00,35.29,35.50,45.00,45.00,45.00
+Perlis,0010571WL,Sg. Pelarit di Wang Kelian (F2),Padang Besar,Sungai Perlis,Sg. Wang Kelian,26/10/2026 09:00:00,105.64,105.30,105.90,106.20,106.60
+Perlis,0010671WL,Sg. Perlis di Tebing Tinggi (F2),Kangar,Sungai Perlis,Sg. Perlis,26/10/2026 09:00:00,0.82,1.00,2.00,2.50,3.00
+Kedah,0020501WL,Sg. Titi Kerbau di Kubur Panjang (F2),Pendang,Sungai Kedah,Sg. Titi Kerbau,26/10/2026 09:00:00,4.31,2.00,4.30,4.70,5.00
+Kedah,0020541WL,Sg. Laka di Kg. Padang Pasir (F2),Kubang Pasu,Sungai Kedah,Sg. Laka,26/10/2026 09:00:00,21.64,18.50,21.00,21.30,21.60
+Kedah,KLKW0018,Sg. Melaka di Padang Matsirat (F2),Langkawi,Sungai Melaka (Kedah),Sg. Melaka,26/10/2026 09:00:00,3.56,2.90,3.10,3.30,3.50
+Kedah,KPDG0003,Sg. Pendang di Pendang (F2),Pendang,,,26/10/2026 09:00:00,2.84,1.80,2.40,2.70,3.00
+Kedah,TAWLID,Sg. Anak Bukit di Taman Aman,Kota Setar,Sungai Kedah,Sg. Anak Bukit,26/10/2026 09:06:00,2.02,1.50,2.00,2.30,2.60
+Kedah,97,Kg. Kubang Arang,Kubang Pasu,,,26/10/2026 09:00:00,23.03,22.00,23.50,24.00,25.00
+Pulau Pinang,PSPS10F2,Sg. Kerian di Kg. Byram F2,Seberang Perai Selatan,Sungai Kerian (P. Pinang),Sg. Kerian,26/10/2026 09:00:00,10.01,0.00,310.00,315.00,320.00
+Pulau Pinang,PDBD04F2,Sg. Ara F2,Daerah Barat Daya,Sungai Ara,,26/10/2026 09:00:00,-3.93,0.00,2.50,2.80,3.00
+Perak,5008001,Sg.Klah Baru di Perak,Batang Padang,Sungai Perak,Sg. Bidor,26/10/2026 09:00:00,"-9,999.00",33.50,35.40,35.79,36.00
+Perak,4409401,Sg. Perak di Parit,Perak Tengah,Sungai Perak,Sg. Perak,26/10/2026 09:00:00,18.14,18.00,19.80,21.60,22.00
+Wilayah Persekutuan Kuala Lumpur,0232131WL,SG. KLANG DI JALAN ANG SENG,Bukit Bintang,Sungai Klang (WPKL),Sg. Klang,26/10/2026 09:00:00,19.64,21.00,23.50,24.50,25.60
+Wilayah Persekutuan Kuala Lumpur,0231331WL,SG. KERAYONG DI KG CHERAS BARU,Tititwangsa,Sungai Klang (WPKL),Sg. Kerayong,26/10/2026 09:00:00,49.75,61.00,62.65,63.65,64.65
+Selangor,3118446,"BATU 9, HULU LANGAT",HULU LANGAT,Sungai Klang,Sg. Rasau,26/10/2026 04:46:00,37.20,36.00,38.60,39.10,39.60
+Selangor,3118446,"BATU 20, HULU LANGAT",HULU LANGAT,Sungai Langat,Sg. Langat,26/10/2026 04:15:00,88.61,86.80,89.80,90.10,90.40
+Selangor,3411418,P/A PEKAN TG. KARANG,KUALA SELANGOR,Sungai Tengi,Sg. Tengi,26/10/2026 04:30:00,2.31,1.80,2.00,2.20,2.30
+Johor,1829478,Sg. Batu Pahat di JPS Batu Pahat,Batu Pahat,Sungai Batu Pahat,Sg. Batu Pahat,22/09/2026 14:30:00,7.91,1.00,2.30,2.60,3.00
+Johor,1738401,Sg. Johor di Kota Tinggi,Kota Tinggi,Sungai Johor,Sg. Johor,22/09/2026 14:30:00,0.33,0.50,2.00,2.30,2.60
+Pahang,4514401,Sg. Ikan,Cameron Highlands,Sungai Pahang,Sg. Ikan,26/10/2026 09:00:00,"1,273.71",1277.50,1278.70,1279.00,1279.30
+Pahang,CPKN0001,Sg. Mentiga di Jam. Chini (F1),Pekan,Sungai Pahang,Sg. Mentiga,26/10/2026 09:00:00,11.78,19.00,15.00,15.50,16.00
+Pahang,TESTNOLOC,Test station without known location,Unknown District,Sungai Kuantan,,26/10/2026 09:00:00,3.06,2.00,4.60,6.40,8.20
+Terengganu,0670341WL,Sg. Terengganu di Drawbridge (F1),Kuala Terengganu,Sungai Terengganu,Sg. Terengganu,02/06/2026 12:45:00,1.00,0.30,1.40,1.60,1.80
+Kelantan,0730891WL,Sg. Nenggiri di Belatop (F1),Gua Musang,Sungai Kelantan,Sg. Nenggiri,23/10/2026 19:15:00,"-9,999.00",674.00,67.59,67.80,68.00
+Kelantan,0731301WL,Sg. Kelantan di Kuala Besar (F1),Kota Bharu,Sungai Kelantan,Sg. Kelantan,24/10/2026 19:00:00,0.80,1.00,1.50,1.70,1.85
+Sabah,6467401,Sg. Bandau di Bandau,Kota Marudu,Sungai Bandau,Sg. Bandau,13/12/2026 15:15:00,0.68,1.50,5.90,6.90,7.90
+Wilayah Persekutuan Labuan,0000211WL,Waterfront U/S,Zone 1,New Victoria,New Victoria,26/10/2026 09:00:00,0.10,0.10,1.00,1.50,1.80
+Wilayah Persekutuan Labuan,0000211WL,Waterfront D/S,Zone 1,New Victoria,New Victoria,26/10/2026 08:50:01,0.13,0.60,1.00,1.25,1.50
+Sarawak,43SRK,Pusa,Betong,Batang Saribas,,26/10/2026 09:00:00,-0.08,,2.62,3.22,3.82
+Sarawak,22SRK,Padungan,Kuching,Sungai Sarawak,,26/10/2026 09:00:00,0.80,0.50,2.60,2.81,3.30
+Sarawak,117SRK,Long Tengoa,Limbang,Batang Trusan,,26/10/2026 09:00:00,47.72,44.30,46.50,48.00,50.00

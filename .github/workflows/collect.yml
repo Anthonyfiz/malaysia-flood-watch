@@ -1,0 +1,45 @@
+name: Collect river levels
+
+on:
+  schedule:
+    # Every 30 minutes (minute 7 and 37 to avoid the busy top of the hour)
+    - cron: "7,37 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: collect
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch, clean and analyse
+        run: python -m floodwatch.run
+
+      - name: Commit new data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data docs/data
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Data update $(TZ=Asia/Kuala_Lumpur date +'%Y-%m-%d %H:%M') MYT"
+            git pull --rebase
+            git push
+          fi
